@@ -2,18 +2,18 @@
 var mqtt = require('mqtt');
 var opt = {
     port: 1883,
-    clientId: '9636dd05-b35d-4deb-8b7b-9533f83ad6a0',
-    username: 'Gym_mqtt',
-    password: 'good1596783'
+    clientId: 'CLIENTID',
+    username: 'MQTT_USERNAME',
+    password: 'MQTT_USERPWD'
 };
 
 // sql設定
 var mysql = require('mysql');
 var conn = mysql.createConnection({
-    host: '140.130.35.236',
-    user: 'usblab',
-    password: 'usblab603',
-    database: 'gym'
+    host: 'MYSQL_HOST',
+    user: 'MYSQL_ACC',
+    password: 'MYSQL_PWD',
+    database: 'MYSQL_DB'
 });
 
   
@@ -22,11 +22,11 @@ var conn = mysql.createConnection({
 var sd = require('silly-datetime');
 
 // 連接MQTT
-var hostname = 'tcp://61.58.248.108';
+var hostname = 'tcp://IP';
 var client = mqtt.connect(hostname, opt);
 client.on('connect', function () {
     console.log('已連接至MQTT：' + hostname + '\n');
-    client.subscribe("gym/data");
+    client.subscribe("YOUR_TOPIC");
 });
 
 // 接收訊息
@@ -39,10 +39,7 @@ client.on('message', function (topic, message) {
 //資料處理
 function dataProcess(message) {
 
-    if(message=="Ready!")
-    {
-
-    }
+    if(message=="Ready!") {}
     else{
     var json = JSON.parse(message);
     var type=json.type;
