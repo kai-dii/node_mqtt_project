@@ -2,7 +2,7 @@
 var mqtt = require('mqtt');
 var opt = {
     port: 1883,
-    clientId: 'CLIENTID',
+    clientId: 'CLIENT_ID',
     username: 'MQTT_USERNAME',
     password: 'MQTT_USERPWD'
 };
